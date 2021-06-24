@@ -46,7 +46,6 @@ function animate() {
   requestAnimationFrame(animate);
 }
 
-
 onmessage = (e) => {
   if (e.data.type === 'init') {
     ({ canvas, r } = e.data);
