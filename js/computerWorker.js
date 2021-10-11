@@ -4,14 +4,14 @@ let interval = null;
 
 function getNeighborSum(_grid, _t, _r) {
   let sum = 0;
-  sum += _grid[_t - _r - 1] > 0;
-  sum += _grid[_t - _r] > 0;
-  sum += _grid[(_t - _r) + 1] > 0;
-  sum += _grid[_t - 1] > 0;
-  sum += _grid[_t + 1] > 0;
-  sum += _grid[(_t + _r) - 1] > 0;
-  sum += _grid[_t + _r] > 0;
-  sum += _grid[_t + _r + 1] > 0;
+  sum += _grid[_t - _r - 1] === 9;
+  sum += _grid[_t - _r] === 9;
+  sum += _grid[(_t - _r) + 1] === 9;
+  sum += _grid[_t - 1] === 9;
+  sum += _grid[_t + 1] === 9;
+  sum += _grid[(_t + _r) - 1] === 9;
+  sum += _grid[_t + _r] === 9;
+  sum += _grid[_t + _r + 1] === 9;
 
   return sum;
 }
@@ -22,9 +22,9 @@ function computeNextGrid(_grid, _r) {
     const ns = getNeighborSum(_grid, t, _r);
     if (ns === 3) {
       grid2[t] = 9;
-    } else if (ns < 2 || ns > 3) {
-      grid2[t] = 0;
     } else if (ns === 2) {
+      grid2[t] = _grid[t] === 9 ? 9 : _grid[t] - 1;
+    } else if (ns < 2 || ns > 3) {
       grid2[t] = _grid[t] - 1;
     }
   }
